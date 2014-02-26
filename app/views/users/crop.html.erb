@@ -1,0 +1,16 @@
+<h1>Crop Avatar</h1>
+<%= image_tag @user.avatar_url, id: 'cropbox' %>
+
+<h4>Preview</h4>
+<div style='width:100px; height:100px; overflow:hidden;'>
+  <%= image_tag @user.avatar.url, id: 'preview' %>
+</div>
+
+<%= form_for @user do |f| %>
+  <div class='actions'>
+    <% %w[x y w h].each do |attribute| %>
+      <%= "#{attribute}: " %><%= f.text_field "crop_#{attribute}", style: 'width: 50px' %>
+    <% end %>
+    <%= f.submit 'Crop' %>
+  </div>
+<% end %>

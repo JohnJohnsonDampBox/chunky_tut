@@ -1,4 +1,4 @@
-<h1>Crop Avatar</h1>
+<h1>Slop Crop</h1>
 <%= image_tag @user.avatar_url, id: 'cropbox' %>
 
 <h4>Preview</h4>
@@ -7,10 +7,10 @@
 </div>
 
 <%= form_for @user do |f| %>
-  <div class='actions'>
-    <% %w[x y w h].each do |attribute| %>
-      <%= "#{attribute}: " %><%= f.text_field "crop_#{attribute}", style: 'width: 50px' %>
-    <% end %>
-    <%= f.submit 'Crop' %>
-  </div>
+  <% %w[x y w h].each do |attribute| %>
+    <%= "#{attribute}: " %><%= f.text_field "crop_#{attribute}", style: 'width: 50px' %>
+  <% end %>
+  <%= f.label :grayscale %>
+  <%= f.check_box :grayscale %><br />
+  <%= f.submit 'Crop' %>
 <% end %>
